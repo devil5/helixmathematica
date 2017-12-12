@@ -1,4 +1,4 @@
-package com.titanhelix.mathematica.data.dao;
+package com.titanhelix.mathematica.dataaccessobjects;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;

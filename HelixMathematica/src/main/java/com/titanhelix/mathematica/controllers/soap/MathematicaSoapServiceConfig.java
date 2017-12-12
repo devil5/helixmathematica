@@ -1,4 +1,4 @@
-package com.titanhelix.mathematica.soap;
+package com.titanhelix.mathematica.controllers.soap;
 
 import org.springframework.boot.web.servlet.ServletRegistrationBean;
 import org.springframework.context.ApplicationContext;
@@ -12,9 +12,11 @@ import org.springframework.ws.wsdl.wsdl11.DefaultWsdl11Definition;
 import org.springframework.xml.xsd.SimpleXsdSchema;
 import org.springframework.xml.xsd.XsdSchema;
 
+import com.titanhelix.mathematica.MathematicaConstants;
+
 @EnableWs
 @Configuration
-public class MathematicaServiceConfig extends WsConfigurerAdapter {
+public class MathematicaSoapServiceConfig extends WsConfigurerAdapter {
 
 	@Bean
 	public ServletRegistrationBean messageDispatcherServlet(ApplicationContext applicationContext) {
@@ -29,7 +31,7 @@ public class MathematicaServiceConfig extends WsConfigurerAdapter {
 		DefaultWsdl11Definition wsdl11Definition = new DefaultWsdl11Definition();
 		wsdl11Definition.setPortTypeName("MathematicaPort");
 		wsdl11Definition.setLocationUri("/ws");
-		wsdl11Definition.setTargetNamespace("http://mathematica.titanhelix.com/ws/mathematica-soap");
+		wsdl11Definition.setTargetNamespace(MathematicaConstants.NAMESPACE_URI);
 		wsdl11Definition.setSchema(mathematicaSchema);
 		return wsdl11Definition;
 	}

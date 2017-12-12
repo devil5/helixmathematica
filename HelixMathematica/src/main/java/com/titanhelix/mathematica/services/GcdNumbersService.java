@@ -1,4 +1,4 @@
-package com.titanhelix.mathematica.data;
+package com.titanhelix.mathematica.services;
 
 import java.math.BigInteger;
 import java.util.List;
@@ -9,11 +9,13 @@ import java.util.stream.StreamSupport;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.titanhelix.mathematica.data.dao.Gcd;
-import com.titanhelix.mathematica.data.dao.Numbers;
+import com.titanhelix.mathematica.dataaccess.GcdRepository;
+import com.titanhelix.mathematica.dataaccess.NumbersRepository;
+import com.titanhelix.mathematica.dataaccessobjects.Gcd;
+import com.titanhelix.mathematica.dataaccessobjects.Numbers;
 
 @Service
-public class IntegerQueue {
+public class GcdNumbersService {
 
 	private ConcurrentLinkedDeque<Integer> integerDequeu;
 
@@ -39,8 +41,15 @@ public class IntegerQueue {
 	 * GCD Repository
 	 */
 	public int getGcd() {
-		int gcd = BigInteger.valueOf(getIntegerDequeu().poll()).gcd(BigInteger.valueOf(getIntegerDequeu().poll())).intValue();
-		gcdRepository.save(new Gcd(gcd));
+		int gcd = 0;
+
+		// Insertions and Pops are made in pairs, so there shouldn't be a case of a
+		// single element
+		if (getIntegerDequeu().size() >= 2) {
+			gcd = BigInteger.valueOf(getIntegerDequeu().poll()).gcd(BigInteger.valueOf(getIntegerDequeu().poll())).intValue();
+			gcdRepository.save(new Gcd(gcd));
+		}
+
 		return gcd;
 	}
 

@@ -4,17 +4,17 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jms.annotation.JmsListener;
 import org.springframework.stereotype.Component;
 
-import com.titanhelix.mathematica.data.IntegerQueue;
+import com.titanhelix.mathematica.services.GcdNumbersService;
 
 @Component
 public class IntegerReceiver {
 
 	@Autowired
-	private IntegerQueue integerQueue;
+	private GcdNumbersService gcdNumbersService;
 
-	@JmsListener(destination = "IntegerQueue", containerFactory = "jmsListenerFactory")
+	@JmsListener(destination = "GcdNumbersService", containerFactory = "jmsListenerFactory")
 	public void receiveMessage(Integer number) {
-		integerQueue.save(number);
+		gcdNumbersService.save(number);
 	}
 
 }
