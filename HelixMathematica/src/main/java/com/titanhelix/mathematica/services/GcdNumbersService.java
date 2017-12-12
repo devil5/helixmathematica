@@ -46,7 +46,7 @@ public class GcdNumbersService {
 		// Insertions and Pops are made in pairs, so there shouldn't be a case of a
 		// single element
 		if (getIntegerDequeu().size() >= 2) {
-			gcd = BigInteger.valueOf(getIntegerDequeu().poll()).gcd(BigInteger.valueOf(getIntegerDequeu().poll())).intValue();
+			gcd = BigInteger.valueOf(getIntegerDequeu().pollLast()).gcd(BigInteger.valueOf(getIntegerDequeu().pollLast())).intValue();
 			gcdRepository.save(new Gcd(gcd));
 		}
 

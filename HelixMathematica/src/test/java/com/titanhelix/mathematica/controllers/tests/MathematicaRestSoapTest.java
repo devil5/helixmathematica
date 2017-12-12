@@ -52,9 +52,6 @@ public class MathematicaRestSoapTest {
 
 	/*
 	 * Integration Testing REST/SOAP API - alphabetical prefixes are to ensure order
-	 * TODO: Don't be beguiled by successful test-cases, the operations are
-	 * performing non-uniformly whereby Spring Data/JPA NOT committing the first
-	 * push every time - Momin
 	 */
 	@Test
 	public void a_verifyEmptyList() throws Exception {
@@ -62,13 +59,18 @@ public class MathematicaRestSoapTest {
 	}
 
 	@Test
-	public void b_verifyValidRestPush() throws Exception {
+	public void ba_verifyValidRestPush() throws Exception {
 		mockMvc.perform(MockMvcRequestBuilders.post("/rest/push/3/6").accept(MediaType.TEXT_PLAIN)).andExpect(status().isCreated()).andExpect(content().string("201")).andDo(print());
 	}
 
 	@Test
+	public void bc_verifyValidRestPush() throws Exception {
+		mockMvc.perform(MockMvcRequestBuilders.post("/rest/push/10/5").accept(MediaType.TEXT_PLAIN)).andExpect(status().isCreated()).andExpect(content().string("201")).andDo(print());
+	}
+
+	@Test
 	public void c_verifyPopulatedList() throws Exception {
-		mockMvc.perform(MockMvcRequestBuilders.get("/rest/list").accept(MediaType.APPLICATION_JSON)).andExpect(jsonPath("$", hasSize(2))).andDo(print());
+		mockMvc.perform(MockMvcRequestBuilders.get("/rest/list").accept(MediaType.APPLICATION_JSON)).andExpect(jsonPath("$", hasSize(4))).andDo(print());
 	}
 
 	@Test
@@ -76,7 +78,7 @@ public class MathematicaRestSoapTest {
 		GetGcdRequest getGcdRequest = new GetGcdRequest();
 		GetGcdResponse getGcdResponse = mathematicaSoapServiceEndpoint.getGcd(getGcdRequest);
 		Assert.assertNotNull(getGcdResponse);
-		Assert.assertEquals(3, getGcdResponse.getGcd());
+		Assert.assertEquals(5, getGcdResponse.getGcd());
 	}
 
 	@Test
@@ -85,7 +87,7 @@ public class MathematicaRestSoapTest {
 		GetGcdListResponse getGcdListResponse = mathematicaSoapServiceEndpoint.getGcdList(getGcdListRequest);
 		Assert.assertNotNull(getGcdListResponse);
 		Assert.assertTrue(getGcdListResponse.getGcdList().size() > 0);
-		Assert.assertTrue(Integer.valueOf(getGcdListResponse.getGcdList().get(0)) == 3);
+		Assert.assertTrue(Integer.valueOf(getGcdListResponse.getGcdList().get(0)) == 5);
 	}
 
 	@Test
@@ -93,12 +95,12 @@ public class MathematicaRestSoapTest {
 		GetGcdSumRequest getGcdSumRequest = new GetGcdSumRequest();
 		GetGcdSumResponse getGcdSumResponse = mathematicaSoapServiceEndpoint.getGcdSum(getGcdSumRequest);
 		Assert.assertNotNull(getGcdSumResponse);
-		Assert.assertTrue(getGcdSumResponse.getGcdSum() == 3);
+		Assert.assertTrue(getGcdSumResponse.getGcdSum() == 5);
 	}
 
 	@Test
 	public void d_verifyValidRestPush2() throws Exception {
-		mockMvc.perform(MockMvcRequestBuilders.post("/rest/push/5/10").accept(MediaType.TEXT_PLAIN)).andExpect(status().isCreated()).andExpect(content().string("201")).andDo(print());
+		mockMvc.perform(MockMvcRequestBuilders.post("/rest/push/21/14").accept(MediaType.TEXT_PLAIN)).andExpect(status().isCreated()).andExpect(content().string("201")).andDo(print());
 	}
 
 	@Test
@@ -106,7 +108,7 @@ public class MathematicaRestSoapTest {
 		GetGcdRequest getGcdRequest = new GetGcdRequest();
 		GetGcdResponse getGcdResponse = mathematicaSoapServiceEndpoint.getGcd(getGcdRequest);
 		Assert.assertNotNull(getGcdResponse);
-		Assert.assertEquals(5, getGcdResponse.getGcd());
+		Assert.assertEquals(7, getGcdResponse.getGcd());
 	}
 
 	@Test
@@ -115,7 +117,7 @@ public class MathematicaRestSoapTest {
 		GetGcdListResponse getGcdListResponse = mathematicaSoapServiceEndpoint.getGcdList(getGcdListRequest);
 		Assert.assertNotNull(getGcdListResponse);
 		Assert.assertTrue(getGcdListResponse.getGcdList().size() > 0);
-		Assert.assertTrue(Integer.valueOf(getGcdListResponse.getGcdList().get(1)) == 5);
+		Assert.assertTrue(Integer.valueOf(getGcdListResponse.getGcdList().get(1)) == 7);
 	}
 
 	@Test
@@ -123,7 +125,7 @@ public class MathematicaRestSoapTest {
 		GetGcdSumRequest getGcdSumRequest = new GetGcdSumRequest();
 		GetGcdSumResponse getGcdSumResponse = mathematicaSoapServiceEndpoint.getGcdSum(getGcdSumRequest);
 		Assert.assertNotNull(getGcdSumResponse);
-		Assert.assertTrue(getGcdSumResponse.getGcdSum() == 8);
+		Assert.assertTrue(getGcdSumResponse.getGcdSum() == 12);
 	}
 
 	@Test
@@ -133,7 +135,7 @@ public class MathematicaRestSoapTest {
 
 	@Test
 	public void eb_verifyPopulatedList2() throws Exception {
-		mockMvc.perform(MockMvcRequestBuilders.get("/rest/list").accept(MediaType.APPLICATION_JSON)).andExpect(jsonPath("$", hasSize(4))).andDo(print());
+		mockMvc.perform(MockMvcRequestBuilders.get("/rest/list").accept(MediaType.APPLICATION_JSON)).andExpect(jsonPath("$", hasSize(6))).andDo(print());
 	}
 
 	@Test
