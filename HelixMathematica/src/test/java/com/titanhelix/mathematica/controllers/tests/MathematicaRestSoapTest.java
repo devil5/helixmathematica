@@ -24,12 +24,12 @@ import org.springframework.web.context.WebApplicationContext;
 
 import com.titanhelix.mathematica.HelixMathematicaApplication;
 import com.titanhelix.mathematica.controllers.soap.MathematicaSoapServiceEndpoint;
-import com.titanhelix.mathematica.ws.mathematica_soap.GetGcdListRequest;
-import com.titanhelix.mathematica.ws.mathematica_soap.GetGcdListResponse;
-import com.titanhelix.mathematica.ws.mathematica_soap.GetGcdRequest;
-import com.titanhelix.mathematica.ws.mathematica_soap.GetGcdResponse;
-import com.titanhelix.mathematica.ws.mathematica_soap.GetGcdSumRequest;
-import com.titanhelix.mathematica.ws.mathematica_soap.GetGcdSumResponse;
+import com.titanhelix.mathematica.ws.mathematica.GetGcdListRequest;
+import com.titanhelix.mathematica.ws.mathematica.GetGcdListResponse;
+import com.titanhelix.mathematica.ws.mathematica.GetGcdRequest;
+import com.titanhelix.mathematica.ws.mathematica.GetGcdResponse;
+import com.titanhelix.mathematica.ws.mathematica.GetGcdSumRequest;
+import com.titanhelix.mathematica.ws.mathematica.GetGcdSumResponse;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = HelixMathematicaApplication.class)

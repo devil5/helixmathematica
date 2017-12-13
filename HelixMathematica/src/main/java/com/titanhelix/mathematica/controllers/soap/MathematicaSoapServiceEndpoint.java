@@ -7,12 +7,12 @@ import org.springframework.ws.server.endpoint.annotation.RequestPayload;
 import org.springframework.ws.server.endpoint.annotation.ResponsePayload;
 
 import com.titanhelix.mathematica.services.GcdNumbersService;
-import com.titanhelix.mathematica.ws.mathematica_soap.GetGcdListRequest;
-import com.titanhelix.mathematica.ws.mathematica_soap.GetGcdListResponse;
-import com.titanhelix.mathematica.ws.mathematica_soap.GetGcdRequest;
-import com.titanhelix.mathematica.ws.mathematica_soap.GetGcdResponse;
-import com.titanhelix.mathematica.ws.mathematica_soap.GetGcdSumRequest;
-import com.titanhelix.mathematica.ws.mathematica_soap.GetGcdSumResponse;
+import com.titanhelix.mathematica.ws.mathematica.GetGcdListRequest;
+import com.titanhelix.mathematica.ws.mathematica.GetGcdListResponse;
+import com.titanhelix.mathematica.ws.mathematica.GetGcdRequest;
+import com.titanhelix.mathematica.ws.mathematica.GetGcdResponse;
+import com.titanhelix.mathematica.ws.mathematica.GetGcdSumRequest;
+import com.titanhelix.mathematica.ws.mathematica.GetGcdSumResponse;
 
 @Endpoint
 public class MathematicaSoapServiceEndpoint {
