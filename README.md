@@ -3,6 +3,17 @@
 ## Environment:
 ```Oracle Java (JDK jdk1.8.0_151 64-bit)```
 
+## Building and running:
+Generate a .war by executing the following command in the project folder:
+
+```mvn clean package```
+
+The WAR generated (typically residing in target/*.war) may then be directly deployed onto a Java application server, or it can be packaged in another EAR and then deployed.
+
+In case the stand-alone .war doesn't boot on an application server, test it through by forcing spring-boot's embedded container to run the application. Type the following command in the application directory:
+
+```mvn spring-boot:run```
+
 ### REST API
 Push to Queue: ```<server>:<port>/rest/push/[Number 1]/[Number 2]```
 
@@ -10,11 +21,6 @@ List Queue: ```<server>:<port>/rest/list```
 
 ### SOAP WSDL
 ```http://<server>:<port>/ws/mathematica.wsdl```
-
-### Building and running:
-Generate a .war by executing the following command in the project folder:
-```mvn clean package```
-The WAR generated (typically residing in target/*.war) may then be directly deployed onto a Java application server, or it can be packaged in another EAR and then deployed.
 
 ### Possible Enhancements:
 1.	Log aggregation using Spring Cloud Sleuth in case the service needs to expand horizontally
