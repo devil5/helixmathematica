@@ -6,6 +6,8 @@ import java.util.concurrent.ConcurrentLinkedDeque;
 import java.util.stream.Collectors;
 import java.util.stream.StreamSupport;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -16,6 +18,8 @@ import com.titanhelix.mathematica.dataaccessobjects.Numbers;
 
 @Service
 public class GcdNumbersService {
+
+	private static final Logger logger = LoggerFactory.getLogger(GcdNumbersService.class);
 
 	private ConcurrentLinkedDeque<Integer> integerDequeu;
 
@@ -31,6 +35,7 @@ public class GcdNumbersService {
 	public void save(Integer number) {
 		getIntegerDequeu().add(number);
 		numbersRepository.save(new Numbers(number));
+		logger.debug(getIntegerDequeu().toString());
 	}
 
 	public List<Integer> getAllNumbers() {
@@ -43,8 +48,8 @@ public class GcdNumbersService {
 	public int getGcd() {
 		int gcd = 0;
 
-		// Insertions and Pops are made in pairs, so there shouldn't be a case of a
-		// single element
+		// Insertions and Pops are made in pairs, so there shouldn't be a case of a ingle element
+		logger.info(getIntegerDequeu().toString());
 		if (getIntegerDequeu().size() >= 2) {
 			gcd = BigInteger.valueOf(getIntegerDequeu().pollLast()).gcd(BigInteger.valueOf(getIntegerDequeu().pollLast())).intValue();
 			gcdRepository.save(new Gcd(gcd));
