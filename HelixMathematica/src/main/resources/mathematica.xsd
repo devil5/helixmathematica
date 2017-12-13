@@ -1,4 +1,4 @@
-<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://mathematica.titanhelix.com/ws/mathematica-soap" targetNamespace="http://mathematica.titanhelix.com/ws/mathematica-soap" elementFormDefault="qualified">
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://mathematica.titanhelix.com/ws/mathematica" targetNamespace="http://mathematica.titanhelix.com/ws/mathematica" elementFormDefault="qualified">
 	<xs:element name="getGcdRequest">
 		<xs:complexType>
 			<xs:sequence>

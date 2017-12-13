@@ -6,7 +6,6 @@ import org.springframework.ws.server.endpoint.annotation.PayloadRoot;
 import org.springframework.ws.server.endpoint.annotation.RequestPayload;
 import org.springframework.ws.server.endpoint.annotation.ResponsePayload;
 
-import com.titanhelix.mathematica.MathematicaConstants;
 import com.titanhelix.mathematica.services.GcdNumbersService;
 import com.titanhelix.mathematica.ws.mathematica_soap.GetGcdListRequest;
 import com.titanhelix.mathematica.ws.mathematica_soap.GetGcdListResponse;
@@ -18,10 +17,12 @@ import com.titanhelix.mathematica.ws.mathematica_soap.GetGcdSumResponse;
 @Endpoint
 public class MathematicaSoapServiceEndpoint {
 
+	private static final String NAMESPACE_URI = "http://mathematica.titanhelix.com/ws/mathematica";
+
 	@Autowired
 	private GcdNumbersService gcdNumbersService;
 
-	@PayloadRoot(namespace = MathematicaConstants.NAMESPACE_URI, localPart = "getGcdRequest")
+	@PayloadRoot(namespace = NAMESPACE_URI, localPart = "getGcdRequest")
 	@ResponsePayload
 	public GetGcdResponse getGcd(@RequestPayload GetGcdRequest request) {
 		GetGcdResponse response = new GetGcdResponse();
@@ -29,7 +30,7 @@ public class MathematicaSoapServiceEndpoint {
 		return response;
 	}
 
-	@PayloadRoot(namespace = MathematicaConstants.NAMESPACE_URI, localPart = "getGcdSumRequest")
+	@PayloadRoot(namespace = NAMESPACE_URI, localPart = "getGcdSumRequest")
 	@ResponsePayload
 	public GetGcdSumResponse getGcdSum(@RequestPayload GetGcdSumRequest request) {
 		GetGcdSumResponse response = new GetGcdSumResponse();
@@ -37,7 +38,7 @@ public class MathematicaSoapServiceEndpoint {
 		return response;
 	}
 
-	@PayloadRoot(namespace = MathematicaConstants.NAMESPACE_URI, localPart = "getGcdListRequest")
+	@PayloadRoot(namespace = NAMESPACE_URI, localPart = "getGcdListRequest")
 	@ResponsePayload
 	public GetGcdListResponse getGcdList(@RequestPayload GetGcdListRequest request) {
 		GetGcdListResponse response = new GetGcdListResponse();
